@@ -1,0 +1,246 @@
+
+<!-- TWO STEPS TO INSTALL BINARY TO DECIMAL:
+
+
+
+  1.  Copy the coding into the HEAD of your HTML document
+
+  2.  Add the last code into the BODY of your HTML document  -->
+
+
+
+<!-- STEP ONE: Paste this code into the HEAD of your HTML document  -->
+
+
+
+<HEAD>
+
+
+
+<!-- This script and many more are available free online at -->
+
+<!-- The JavaScript Source!! http://www.javascriptsource.com -->
+
+<!-- Original:  Brett McLean (midget6000@hotmail.com ) -->
+
+<!-- Web Site:  http://www.geocities.com/midget654/ -->
+
+<script>
+
+var num1;
+
+var num2;
+
+var currnum;
+
+
+
+function convert()
+
+{
+
+currnum = 128;
+
+if(document.binaryform.select1.value == "b2d")
+
+	{
+
+	num1 = document.binaryform.text1.value;
+
+	num2 = eval(num1.charAt(0)) * currnum;
+
+
+
+	for (i = 1; i <= 7; i++)
+
+		{
+
+		currnum = currnum / 2;
+
+		num2 = num2 + (eval(num1.charAt(i)) * currnum);
+
+		}
+
+	
+
+
+
+	document.binaryform.text2.value = num2;
+
+	}
+
+	else
+
+	if(document.binaryform.select1.value == "d2b")
+
+		{
+
+		num1 = eval(document.binaryform.text1.value);
+
+		if(num1 >= currnum)
+
+			{
+
+			num2 = "1";
+
+			num1 = num1 - currnum;
+
+			currnum = currnum / 2;
+
+			}
+
+			else
+
+			{
+
+			num2 = "0";
+
+			currnum = currnum / 2;
+
+			}
+
+		
+
+		for (p = 1; p <= 7; p++)
+
+			{
+
+			if(num1 >= currnum)
+
+				{
+
+				num2 = num2 + "1";
+
+				num1 = num1 - currnum;
+
+				currnum = currnum / 2;
+
+				}
+
+				else
+
+				{
+
+				num2 = num2 + "0";
+
+				currnum = currnum / 2;
+
+				}
+
+			}
+
+		document.binaryform.text2.value = num2;
+
+		}
+
+
+
+}
+
+
+
+</script>
+
+
+
+</HEAD>
+
+
+
+<!-- STEP TWO: Copy this code into the BODY of your HTML document  -->
+
+
+
+<BODY>
+
+
+
+<!-- This script and many more are available free online at -->
+
+<!-- The JavaScript Source!! http://www.javascriptsource.com -->
+
+<!-- Original:  Brett McLean (midget6000@hotmail.com ) -->
+
+<!-- Web Site:  http://www.geocities.com/midget654/ -->
+
+<center>
+
+<table width="50%" border="1">
+
+
+
+<form name="binaryform">
+
+
+
+<tr>
+
+<td align="center">
+
+<b>Input</b><br>
+
+<input type="text" name="text1">
+
+</td>
+
+<td align="center">
+
+<b>Output</b><br>
+
+<input type="text" name="text2">
+
+</td>
+
+</tr>
+
+
+
+<tr>
+
+
+
+<td colspan="2" align="center">
+
+<input type="button" name="butt1" value="Convert" onclick="convert()">
+
+<td>
+
+
+
+</tr>
+
+
+
+<tr>
+
+
+
+<td colspan="2" align="center">
+
+
+
+<select name="select1">
+
+<option value="b2d">Binary to Decimal
+
+<option value="d2b">Decimal to Binary
+
+</select>
+
+
+
+</td>
+
+
+
+</tr>
+
+</form>
+
+
+
+</table>
+
+
+
+</center>

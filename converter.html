@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<style>
+.calc { padding:20px; }
+	.calc input[type=number] { padding:5px; font:x-large Arial; }
+	.calc button { margin:10px auto; }
+	.calc textarea { padding:5px; font:x-large Arial; }
+	.calc tr:nth-child(n+6):nth-child(-n+11) { display:none; }
+@media all and (max-width: 576px) {
+	.calc { padding:15px; width:100%; }
+	.calc input[type=number] { width:100%; }
+	.calc textarea { width:100%; }
+}
+@media all and (min-width: 577px) {
+	.calc input[type=number] { width:400px; }
+	.calc textarea { width:400px; }
+}
+	.ntable tr td { width:90px; }
+
+
+
+
+
+
+</style>
+<!-- #EndEditable -->
+
+
+
+</head>
+
+<body>
+
+
+<div id="lcol">
+
+	<div id="doc">
+	<!-- #BeginEditable "doctext" -->
+	<h1>Decimal to Binary converter</h1>
+	<form name="calcform">
+	<table class="calc">
+	  <tbody>
+	  <tr>
+		<td colspan="2"><label for="x">Enter decimal number:</label></td>
+	  </tr>
+	  <tr>
+		<td><input type="number" id="x" name="x" class="intext" autofocus tabindex="1"></td>
+		<td class="mathsymbol"><sub>10</sub></td>
+	  </tr>
+	  <tr>
+	  	<td colspan="2">
+			<button type="button" title="Convert" class="btn" tabindex="2" onclick="convert()"><img src="/lib/icons/glyphicons_all/glyphicons_halflings/glyphicons_halflings_030_refresh.png" alt=""> Convert</button>
+			<button type="reset" title="Reset" class="btn" tabindex="3" onclick="resetbtn()"><img src="/lib/icons/glyphicons_all/glyphicons_halflings/glyphicons_halflings_013_remove.png" alt=""> Reset</button>
+			<button type="button" title="Swap conversion" class="btn" tabindex="4" onclick="location.href='binary-to-decimal.htm';"><img src="/lib/icons/glyphicons_all/glyphicons_halflings/glyphicons_halflings_114_retweet.png" alt=""> Swap</button>
+	  	</td>
+	  </tr>
+	  <tr>
+		<td colspan="2">Binary number:</td>
+	  </tr>
+	  <tr>
+		<td><textarea rows="2" id="y" class="outtext" readonly tabindex="5"></textarea></td>
+		<td class="mathsymbol"><sub>2</sub></td>
+	  </tr>
+	  <tr>
+		<td colspan="2">Binary signed 8-bit:</td>
+	  </tr>
+	  <tr>
+		<td><textarea rows="2" id="y2" class="outtext" readonly tabindex="6"></textarea></td>
+		<td class="mathsymbol"><sub>2</sub></td>
+	  </tr>
+	  <tr>
+		<td colspan="2">Binary signed 16-bit:</td>
+	  </tr>
+	  <tr>
+		<td><textarea rows="2" id="y3" class="outtext" readonly tabindex="7"></textarea></td>
+		<td class="mathsymbol"><sub>2</sub></td>
+	  </tr>
+	  <tr>
+		<td colspan="2">Binary signed 32-bit:</td>
+	  </tr>
+	  <tr>
+		<td><textarea rows="2" id="y4" class="outtext" readonly tabindex="8"></textarea></td>
+		<td class="mathsymbol"><sub>2</sub></td>
+	  </tr>
+	  <tr>
+		<td colspan="2">Hex number:</td>
+	  </tr>
+	  <tr>
+		<td><textarea rows="2" id="y5" class="outtext" readonly tabindex="9"></textarea></td>
+		<td class="mathsymbol"><sub>16</sub></td>
+	  </tr>
+	  </tbody>
+	</table>
+	</form>			
+
+td>
+			<td>1100</td>
+		</tr>
+		<tr>
+			<td>13</td>
+			<td>1101</td>
+		</tr>
+		<tr>
+			<td>14</td>
+			<td>1110</td>
+		</tr>
+		<tr>
+			<td>15</td>
+			<td>1111</td>
+		</tr>
+		<tr>
+			<td>16</td>
+			<td>10000</td>
+		</tr>
+		<tr>
+			<td>17</td>
+			<td>10001</td>
+		</tr>
+		<tr>
+			<td>18</td>
+			<td>10010</td>
+		</tr>
+		<tr>
+			<td>19</td>
+			<td>10011</td>
+		</tr>
+		<tr>
+			<td>20</td>
+			<td>10100</td>
+		</tr>
+		<tr>
+			<td>21</td>
+			<td>10101</td>
+		</tr>
+		<tr>
+			<td>22</td>
+			<td>10110</td>
+		</tr>
+		<tr>
+			<td>23</td>
+			<td>10111</td>
+		</tr>
+		<tr>
+			<td>24</td>
+			<td>11000</td>
+		</tr>
+		<tr>
+			<td>25</td>
+			<td>11001</td>
+		</tr>
+		<tr>
+			<td>26</td>
+			<td>11010</td>
+		</tr>
+		<tr>
+			<td>27</td>
+			<td>11011</td>
+		</tr>
+		<tr>
+			<td>28</td>
+			<td>11100</td>
+		</tr>
+		<tr>
+			<td>29</td>
+			<td>11101</td>
+		</tr>
+		<tr>
+			<td>30</td>
+			<td>11110</td>
+		</tr>
+		<tr>
+			<td>31</td>
+			<td>11111</td>
+		</tr>
+		<tr>
+			<td>32</td>
+			<td>100000</td>
+		</tr>
+		<tr>
+			<td>64</td>
+			<td>1000000</td>
+		</tr>
+		<tr>
+			<td>128</td>
+			<td>10000000</td>
+		</tr>
+		<tr>
+			<td>256</td>
+			<td>100000000</td>
+		</tr>
+	</table>
+	<p>&nbsp;</p>
+	<hr>
+	<h2>See also</h2>
+	<ul>
+		<li><a href="binary-to-decimal.htm">Binary to Decimal converter</a></li>
+		<li><a href="decimal-to-hex.htm">Decimal to Hex converter</a></li>
+		<li><a href="decimal-to-octal.htm">Decimal to Octal converter</a></li>
+		<li><a href="Decimal_to_Fraction.htm">Decimal to Fraction converter</a></li>
+		<li><a href="decimal-to-percent.htm">Decimal to Percent converter</a></li>
+		<li><a href="ascii-to-binary.htm">ASCII text to binary converter</a></li>
+		<li><a href="/math/number/Numeral_system.htm">Numeral systems</a></li>
+		<li><a href="../index.htm">Conversion</a></li>
+	</ul>
+	
+	<script src="/lib/bignumber/bignumber.min.js" defer></script>
+	<script type="text/javascript">
+		function pad(n, width, z) {
+		  z = z || '0';
+		  n = n + '';
+		  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+		}
+		
+		function resetbtn() {
+			var rows = document.getElementsByTagName("table")[0].getElementsByTagName("tr");
+			rows[5].style.display="none";
+			rows[6].style.display="none";
+			rows[7].style.display="none";
+			rows[8].style.display="none";
+			rows[9].style.display="none";
+			rows[10].style.display="none";
+		}
+		
+		function convert() {
+			var dec = document.calcform.x.value;
+			try {
+				var x = new BigNumber(dec, 10);
+				document.getElementById("x").style.backgroundColor = "white";
+			}
+			catch(err) {
+				document.getElementById("x").style.backgroundColor = "#fff0f0";
+				return;
+			}
+			document.getElementById("y").value = x.toString(2);
+			document.getElementById("y5").value = x.toString(16).toUpperCase();
+			var rows = document.getElementsByTagName("table")[0].getElementsByTagName("tr");
+			if( x.isInteger() && x.gte(-128) && x.lte(127) ) {
+				var y2 = new BigNumber(x, 10);
+				if( x.lessThan(0) ) y2 = x.plus(256);
+				document.getElementById("y2").value = pad(y2.toString(2).toUpperCase(), 8);
+				rows[5].style.display="table-row";
+				rows[6].style.display="table-row";
+			}
+			else {
+				document.getElementById("y2").value = "";
+				rows[5].style.display="none";
+				rows[6].style.display="none";
+			}
+			if( x.isInteger() && x.gte(-32768) && x.lte(32767) ) {
+				var y3 = new BigNumber(x, 10);
+				if( x.lessThan(0) ) y3 = x.plus(65536);
+				document.getElementById("y3").value = pad(y3.toString(2).toUpperCase(), 16);
+				rows[7].style.display="table-row";
+				rows[8].style.display="table-row";
+			}
+			else {
+				document.getElementById("y3").value = "";
+				rows[7].style.display="none";
+				rows[8].style.display="none";
+			}
+			if( x.isInteger() && x.gte(-2147483648) && x.lte(2147483647) ) {
+				var y4 = new BigNumber(x, 10);
+				if( x.lessThan(0) ) y4 = x.plus(4294967296);
+				document.getElementById("y4").value = pad(y4.toString(2).toUpperCase(), 32);
+				rows[9].style.display="table-row";
+				rows[10].style.display="table-row";
+			}
+			else {
+				document.getElementById("y4").value = "";
+				rows[9].style.display="none";
+				rows[10].style.display="none";
+			}
+		}
+	</script>
+	<!-- #EndEditable -->
+
+	<div id="ban-ad">
+		<ins class="adsbygoogle adslot_3"
+		     data-ad-client="ca-pub-5335356106950684"
+		     data-ad-slot="3065550301"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+	<!-- #BeginEditable "doctext2" -->
+	<!-- #EndEditable -->
+	</div>
+	
+	<div id="fdbk">
+		<h2><a id="feedback"></a>Write how to improve this page</h2>
+		<form name="feedback" method="post" action="/lib/sendform.php">
+		<table>
+			<tr style="display:none"><td><input type="text" name="URL" readonly="readonly"></td></tr>
+			<tr><td><input type="text" name="Name" tabindex="50" placeholder="Your Name"></td></tr>
+			<tr><td><input type="text" name="Email" tabindex="51" placeholder="your@email.com"></td></tr>
+			<tr><td><textarea name="Message" cols="50" rows="5" tabindex="52"></textarea></td></tr>
+			<tr><td><input type="button" value="Submit Feedback" name="Action" class="btn" tabindex="53" onclick="OnSubFb()"></td></tr>
+		</table>
+		</form>
+	</div>
+</div>
+
+<div id="rcol">	
+	<!-- RT aside responsive -->
+	<ins class="adsbygoogle adslot_2"
+	     data-ad-client="ca-pub-5335356106950684"
+	     data-ad-slot="2437938306"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+
+	<!-- AddThis Button BEGIN -->
+	<div class="addthis_sharing_toolbox" id="addthis1"></div>
+	<!-- AddThis Button END -->
+
+	<!-- #BeginEditable "docnav" -->
+	<h5>NUMBER CONVERSION</h5>
+	<ul>
+		<li><a href="ascii-hex-bin-dec-converter.htm">ASCII,Hex,Binary,Decimal converter</a></li>
+		<li><a href="ascii-to-binary.htm">ASCII text to binary converter</a></li>
+		<li><a href="ascii-to-hex.htm">ASCII text to hex converter</a></li>
+		<li><a href="base-converter.htm">Base converter</a></li>
+		<li><a href="binary-converter.htm">Binary converter</a></li>
+		<li><a href="binary-to-ascii.htm">Binary to ASCII text converter</a></li>
+		<li><a href="binary-to-decimal.htm">Binary to decimal converter</a></li>
+		<li><a href="binary-to-hex.htm">Binary to hex converter</a></li>
+		<li><a href="date-to-roman-numerals.htm">Date to roman numerals converter</a></li>
+		<li><a href="Decimal_to_Fraction.htm">Decimal to fraction converter</a></li>
+		<li><a href="decimal-to-percent.htm">Decimal to percent converter</a></li>
+		<li><a href="decimal-to-binary.htm">Decimal to binary converter</a></li>
+		<li><a href="decimal-to-octal.htm">Decimal to octal converter</a></li>
+		<li><a href="decimal-to-hex.htm">Decimal to hex converter</a></li>
+		<li><a href="degrees-to-degrees-minutes-seconds.htm">Degrees to deg,min,sec converter</a></li>
+		<li><a href="degrees-minutes-seconds-to-degrees.htm">Deg,min,sec to degrees converter</a></li>
+		<li><a href="degrees-to-radians.htm">Degrees to radians converter</a></li>
+		<li><a href="Fraction_to_Decimal.htm">Fraction to decimal converter</a></li>
+		<li><a href="fraction-to-percent.htm">Fraction to percent converter</a></li>
+		<li><a href="hex-dec-bin-converter.htm">Hex/decimal/octal/binary converter</a></li>
+		<li><a href="hex-to-ascii.htm">Hex to ASCII text converter</a></li>
+		<li><a href="hex-to-binary.htm">Hex to binary converter</a></li>
+		<li><a href="hex-to-decimal.htm">Hex to decimal converter</a></li>
+		<li><a href="octal-to-decimal.htm">Octal to decimal converter</a></li>
+		<li><a href="percent-to-decimal.htm">Percent to decimal converter</a></li>
+		<li><a href="percent-to-fraction.htm">Percent to fraction converter</a></li>
+		<li><a href="Percent_to_PPM.htm">Percent to ppm converter</a></li>
+		<li><a href="PPM_to_Percent.htm">ppm to percent converter</a></li>
+		<li><a href="ppm-to-ppb.htm">ppm to ppb converter</a></li>
+		<li><a href="ppm-to-ppt.htm">ppm to ppt converter</a></li>
+		<li><a href="ppb-to-ppm.htm">ppb to ppm converter</a></li>
+		<li><a href="ppt-to-ppm.htm">ppt to ppm converter</a></li>
+		<li><a href="ppm-converter.htm">ppm converter</a></li>
+		<li><a href="radians-to-degrees.htm">Radians to degrees converter</a></li>
+		<li><a href="roman-numerals-converter.htm">Roman numerals converter</a></li>
+		<li><a href="scientific-notation-converter.htm">Scientific notation converter</a></li>
+	</ul>
+	<h5>RAPID TABLES</h5>
+	<ul>
+		<li><a href="mailto:?subject=RapidTables%20website&amp;body=Please%20checkout%20this%20site:%20http://www.rapidtables.com">Recommend Site</a></li>
+		<li><a href="#feedback">Send Feedback</a></li>
+		<li><a href="/about/about.htm">About</a></li>
+	</ul>
+	<!-- #EndEditable -->
+	
+	<!-- AddThis Button BEGIN -->
+	<div class="addthis_sharing_toolbox" id="addthis2"></div>
+	<!-- AddThis Button END -->
+</div>
+
+</div>
+
+<div id="footer">
+	<a href="/index.htm">Home</a> | 
+	<a href="/web/index.htm">Web</a> |
+	<a href="/math/index.htm">Math</a> | 
+	<a href="/electric/index.htm">Electricity</a> |
+	<a href="/calc/index.htm">Calculators</a> | 
+	<a href="/convert/index.htm">Converters</a> |
+	<a href="/tools/index.htm">Tools</a>
+	<p>&copy; <script>document.write(new Date().getFullYear())</script> 
+	<a href="/">RapidTables.com</a> | 
+	<a href="/about/about.htm" rel="nofollow">About</a> | 
+	<a href="/about/terms.htm" rel="nofollow">Terms of Use</a> | 
+	<a href="/about/privacy.htm" rel="nofollow">Privacy Policy</a>
+	</p>
+</div>
+
+<!-- #BeginEditable "docscript" -->
+<!-- #EndEditable -->
+
+<script type="text/javascript">
+var addthis_config =
+{
+   ui_disable:true
+}
+</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-539822462192dcdf" async="async"></script>
+<script src="/lib/feedback.js" defer></script>
+
+</body>
+
+<!-- #EndTemplate -->
+
+</html>
+
